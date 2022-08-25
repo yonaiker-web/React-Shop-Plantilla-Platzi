@@ -3,10 +3,11 @@ import ProductItem from "../components/ProductItem";
 import useGetProducts from "../hooks/useGetProducts";
 import "../styles/ProductList.scss";
 
-const api = "https://api.escuelajs.co/api/v1/products";
+const api = "https://fakestoreapi.com/products?limit=200";
 
 const ProductList = () => {
   const products = useGetProducts(api);
+  console.log(products);
 
   return (
     <section className="main-container">

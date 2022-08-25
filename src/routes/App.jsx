@@ -12,25 +12,38 @@ import Checkout from "../pages/Checkout";
 import Orders from "../pages/Orders";
 import NotFound from "../pages/NotFound";
 import "../styles/global.css";
+//improtamos todo lo necesario para usar el contexto en al ruta madre
+import AppContext from "../context/AppContext";
+import useInitialState from "../hooks/useInitialState";
 
 const App = () => {
+  //creamos la constante que almacena todo el contexto
+  const initialState = useInitialState();
+
   return (
-    <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/password-recovery" component={PasswordRecovery} />
-          <Route exact path="/send-email" component={SendEmail} />
-          <Route exact path="/new-password" component={NewPassword} />
-          <Route exact path="/account" component={MyAccount} />
-          <Route exact path="/signup" component={CreateAccount} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/orders" component={Orders} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </Layout>
-    </BrowserRouter>
+    //encapsulamos en todas las ruta para que tengan el contexto
+    <AppContext.Provider value={initialState}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/password-recovery"
+              component={PasswordRecovery}
+            />
+            <Route exact path="/send-email" component={SendEmail} />
+            <Route exact path="/new-password" component={NewPassword} />
+            <Route exact path="/account" component={MyAccount} />
+            <Route exact path="/signup" component={CreateAccount} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/orders" component={Orders} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 };
 
