@@ -14,10 +14,6 @@ const ProductItem = ({ product }) => {
   //importamos la funcion que contiene todo el contexto
   const { addToCart } = useContext(AppContext);
 
-  const handleClick = (item) => {
-    addToCart(item);
-  };
-
   const image = useMemo(
     () => [
       `https://api.lorem.space/image?w=500&h=500&r=${Math.random() * 2000}`,
@@ -27,6 +23,10 @@ const ProductItem = ({ product }) => {
     ],
     []
   );
+
+  const handleClick = (item) => {
+    addToCart({ ...item, image });
+  };
 
   return (
     <div className="ProductItem">
