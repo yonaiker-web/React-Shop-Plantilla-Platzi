@@ -12,7 +12,8 @@ const MyOrder = () => {
     const reducer = (accumalator, currentValue) =>
       accumalator + currentValue.price;
     const sum = state.cart.reduce(reducer, 0);
-    return sum;
+    const sumR = sum.toFixed(2);
+    return sumR;
   };
 
   return (
@@ -22,8 +23,8 @@ const MyOrder = () => {
         <p className="title">My order</p>
       </div>
       <div className="my-order-content">
-        {state.cart.map((product) => (
-          <OrderItem product={product} key={`orderrItem-${product.id}`} />
+        {state.cart.map((product, i) => (
+          <OrderItem product={product} key={`orderItem-${product.id}`} />
         ))}
         <div className="order">
           <p>

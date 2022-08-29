@@ -7,7 +7,7 @@ const api = "https://fakestoreapi.com/products?limit=200";
 
 const ProductList = () => {
   const products = useGetProducts(api);
-  console.log(products);
+  console.log("productos", products);
 
   return (
     <section className="main-container">

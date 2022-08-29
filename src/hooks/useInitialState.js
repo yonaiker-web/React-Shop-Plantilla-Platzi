@@ -8,7 +8,7 @@ const initialState = {
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
 
-  //funcion para crear o agregar valores, payload es el valor que recibimos
+  //funcion para crear o agregar valores al carrito, payload es el valor que recibimos
   const addToCart = (payload) => {
     setState({
       //mantenemos el estado
@@ -18,10 +18,21 @@ const useInitialState = () => {
     });
   };
 
+  //funcion para eliminar valores del carrito
+  const removeFromCart = (payload) => {
+    setState({
+      //mantenemos el estado
+      ...state,
+      //validmaos que el items.id sea igual al valor payload.id que es el pasado por parametros
+      cart: state.cart.filter((items) => items.id !== payload.id),
+    });
+  };
+
   //retornamos el estado y la funcion
   return {
     state,
     addToCart,
+    removeFromCart,
   };
 };
 
