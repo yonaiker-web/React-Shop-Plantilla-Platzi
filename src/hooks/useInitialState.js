@@ -28,7 +28,7 @@ const useInitialState = () => {
     });
   };
 
-  //retornamos el estado y la funcion
+  //retornamos el estado y las funciones
   return {
     state,
     addToCart,
